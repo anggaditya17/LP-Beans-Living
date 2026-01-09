@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beans Living - Bean Bag Paling Nyaman</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            /* Palette Warna: Disesuaikan dengan Beans Living (Clean, Colorful, Modern) */
+            /* Ganti hitam/emas GOLO menjadi Putih/Biru/Kuning cerah khas Beans */
+            --primary-color: #2c3e50; /* Dark Blue Text */
+            --accent-color: #e67e22; /* Orange cheerful */
+            --bg-light: #f9f9f9;
+            --bg-white: #ffffff;
+            --text-main: #333;
+            --wa-green: #25D366; /* Warna WA */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- UTILITY --- */
+        .text-center { text-align: center; }
+        .text-accent { color: var(--accent-color); }
+        .bold { font-weight: 700; }
+        .hidden-mobile { display: block; }
+        img { max-width: 100%; height: auto; }
+
+        /* --- BUTTONS (Gaya GOLO tapi warna WA) --- */
+        .btn-cta {
+            display: inline-block;
+            background: linear-gradient(to bottom, #25D366, #128C7E);
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            border: 2px solid #fff;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .btn-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* --- HEADER --- */
+        header {
+            background-color: #fff;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #eee;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .logo span { color: var(--accent-color); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            /* Ganti URL ini dengan foto bean bag estetik */
+            background: linear-gradient(rgba(255,255,255,0.8), rgba(255,255,255,0.8)), url('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .hero-content {
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            color: #222;
+            margin-bottom: 15px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #555;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- TRUST BADGES (Struktur GOLO) --- */
+        .trust-badges {
+            background: #fff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .badges-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+        }
+        .badge-item i {
+            color: var(--accent-color);
+            font-size: 1.4rem;
+        }
+
+        /* --- PAIN POINTS --- */
+        .pain-points {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .pain-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .pain-list li {
+            background: #fff0f0; /* Merah muda sangat tipis untuk pain point */
+            border-left: 5px solid #e74c3c;
+            padding: 15px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-radius: 5px;
+        }
+        .pain-list li i {
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        /* --- PRODUCT SHOWCASE --- */
+        .product-section {
+            padding: 60px 0;
+            background: #f1f2f6;
+        }
+        .product-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .product-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            /* Placeholder background */
+            background: #eee;
+            min-height: 300px;
+            object-fit: cover;
+        }
+        .price-tag {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin: 10px 0;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.1rem;
+        }
+
+        /* --- BENEFITS --- */
+        .benefits {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .benefit-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+        .benefit-card i {
+            color: var(--accent-color);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- TESTIMONIALS --- */
+        .testimonials {
+            background: #fff;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+        .review-card {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+        .stars { color: #f1c40f; margin-bottom: 5px; }
+
+        /* --- FAQ --- */
+        .faq-section {
+            padding: 60px 0;
+            background: #fff;
+        }
+        .faq-item {
+            border: 1px solid #eee;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 15px;
+            cursor: pointer;
+            background: #fff;
+        }
+        .faq-question {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+        .faq-answer {
+            margin-top: 10px;
+            color: #666;
+            display: none;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #2c3e50;
+            color: #bdc3c7;
+            padding: 40px 0 100px 0; /* Padding bawah extra untuk sticky button */
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* --- STICKY BOTTOM BAR (MOBILE) --- */
+        .sticky-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #fff;
+            padding: 10px 20px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+        }
+        .sticky-info p {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0;
+        }
+        .sticky-info h4 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .hidden-mobile { display: none; }
+            .btn-cta { font-size: 1rem; padding: 12px 20px; }
+            .product-card { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="logo"><i class="fas fa-couch"></i> Beans<span>Living</span></div>
+            <a href="https://wa.me/6281234567890?text=Halo+BeansLiving+saya+mau+order+beanbag" class="btn-cta hidden-mobile" style="padding: 8px 25px; font-size: 0.9rem; width: auto; background: var(--wa-green); border: none;">
+                <i class="fab fa-whatsapp"></i> Chat WA
+            </a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content container">
+            <h3 style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; color: #555;">Official Store</h3>
+            <h1>BUAT RUMAH LEBIH NYAMAN & <span class="text-accent">ESTETIK</span></h1>
+            <p>Solusi rebahan maksimal dengan Bean Bag Premium. Waterproof, Double Zipper, dan siap kirim ke seluruh Indonesia.</p>
+            
+            <a href="https://wa.me/6281234567890?text=Halo+BeansLiving+saya+mau+order+beanbag" class="btn-cta btn-pulse">
+                PESAN VIA WHATSAPP <i class="fab fa-whatsapp"></i>
+            </a>
+            
+            <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.8;">
+                <i class="fas fa-star" style="color: gold;"></i> 4.9 Rating di Shopee | <i class="fas fa-check-circle"></i> Stok Ready
+            </p>
+        </div>
+    </section>
+
+    <div class="trust-badges">
+        <div class="container badges-grid">
+            <div class="badge-item"><i class="fas fa-award"></i> Star+ Seller</div>
+            <div class="badge-item"><i class="fas fa-star"></i> 4.9/5 Average Rating</div>
+            <div class="badge-item"><i class="fas fa-box-open"></i> Terjual Ribuan Pcs</div>
+            <div class="badge-item"><i class="fas fa-shipping-fast"></i> Pengiriman Cepat</div>
+        </div>
+    </div>
+
+    <section class="pain-points container">
+        <h2 class="text-center">Apakah Rumah Anda Terasa Kurang Nyaman?</h2>
+        <ul class="pain-list" style="margin-top: 30px;">
+            <li><i class="fas fa-times-circle"></i> Kursi kayu/plastik bikin pinggang pegal?</li>
+            <li><i class="fas fa-times-circle"></i> Mau beli sofa empuk tapi mahal & makan tempat?</li>
+            <li><i class="fas fa-times-circle"></i> Bingung cari dekorasi yang estetik tapi fungsional?</li>
+            <li><i class="fas fa-times-circle"></i> Takut beli bean bag online isinya kempes?</li>
+        </ul>
+        <div class="text-center" style="margin-top: 30px;">
+            <h3 class="text-accent">BEANS LIVING SOLUSINYA!</h3>
+            <p>Kami hadirkan Bean Bag kualitas premium dengan harga yang masuk akal.</p>
+        </div>
+    </section>
+
+    <section class="product-section">
+        <div class="container">
+            <h2 class="text-center">PRODUK TERLARIS</h2>
+            <div class="product-card">
+                <img src="https://down-id.img.susercontent.com/file/id-11134207-7r98y-lslfxz4z6e7d66" alt="Bean Bag Triangle" class="product-image">
+                
+                <h3>BEAN BAG TRIANGLE (LARGE)</h3>
+                <p style="color: #666; margin-bottom: 10px;">Bahan Waterproof, mudah dibersihkan. Cocok untuk indoor maupun outdoor. Tersedia berbagai warna cantik.</p>
+                
+                <p class="old-price">Rp 345.000</p>
+                <div class="price-tag">Rp 248.000</div>
+                <p style="font-size: 0.8rem; color: #e74c3c; font-weight: bold; margin-bottom: 20px;">*Promo Terbatas Hari Ini</p>
+                
+                <a href="https://wa.me/6281234567890?text=Halo+BeansLiving+saya+mau+promo+Triangle+Beanbag" class="btn-cta btn-pulse">
+                    AMBIL PROMO VIA WA <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits container">
+        <h2 class="text-center">KENAPA HARUS BEANS LIVING?</h2>
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <i class="fas fa-tint"></i>
+                <h3>Bahan Waterproof</h3>
+                <p>Tumpah minuman? Tenang, cukup dilap langsung kering. Gak perlu takut kotor.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-lock"></i>
+                <h3>Double Zipper</h3>
+                <p>Sistem resleting ganda menjamin butiran styrofoam tidak berhamburan keluar. Aman!</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-cloud"></i>
+                <h3>Isi Padat & Empuk</h3>
+                <p>Menggunakan styrofoam butiran kualitas super yang mengikuti bentuk tubuh Anda.</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-palette"></i>
+                <h3>Banyak Pilihan Warna</h3>
+                <p>Tersedia warna Navy, Merah, Kuning, Abu, dll sesuai tema ruangan Anda.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 30px;">KATA MEREKA YANG SUDAH ORDER</h2>
+            
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Barangnya bagus banget, kainnya tebal tapi adem. Waterproof beneran jadi aman buat anak-anak. Admin WA nya juga ramah."</p>
+                <span class="bold" style="font-size: 0.9rem;">- Sarah, Jakarta Selatan</span>
+            </div>
+
+            <div class="review-card">
+                <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                <p>"Pengiriman cepet banget, pesen pagi sore udah proses. Bean bag nya gede dan nyaman buat nonton TV."</p>
+                <span class="bold" style="font-size: 0.9rem;">- Rudi, Bandung</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section container">
+        <h2 class="text-center" style="margin-bottom: 30px;">PERTANYAAN UMUM (FAQ)</h2>
+        
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Apakah cover bisa dicuci? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Untuk tipe waterproof cukup dilap saja. Untuk tipe bahan lain (suede/kanvas), cover luar bisa dilepas dan dicuci.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Apakah sudah termasuk isi styrofoam? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Ya! Harga yang tertera sudah komplit (Cover + Isi). Tinggal pakai saja sampai di rumah.</div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question">Pengiriman aman tidak kempes? <i class="fas fa-chevron-down"></i></div>
+            <div class="faq-answer">Kami memacking dengan standar keamanan tinggi. Jika ada kendala, silakan hubungi admin kami untuk solusi.</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <h3 style="color: #fff; margin-bottom: 15px;">BEANS LIVING</h3>
+            <p>Pusat Bean Bag Berkualitas & Terjangkau.</p>
+            <p style="margin-top: 20px;">&copy; 2024 Beans Living. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <div class="sticky-bar">
+        <div class="sticky-info">
+            <p>Harga Promo:</p>
+            <h4>Rp 195rb - 248rb</h4>
+        </div>
+        <a href="https://wa.me/6281234567890?text=Halo+BeansLiving+saya+mau+tanya+beanbag" class="btn-cta" style="font-size: 0.9rem; padding: 10px 20px; width: auto; box-shadow: none;">
+            CHAT WA <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        function toggleFaq(element) {
+            const answer = element.querySelector('.faq-answer');
+            const icon = element.querySelector('.fa-chevron-down');
+            
+            if (answer.style.display === 'block') {
+                answer.style.display = 'none';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                answer.style.display = 'block';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>
